@@ -1,0 +1,60 @@
+{
+  "name": "Comment",
+  "plural": "comments",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    },
+    "updatedAt": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "customUser": {
+      "type": "belongsTo",
+      "model": "CustomUser",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "comment": {
+      "type": "belongsTo",
+      "model": "Comment",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "article": {
+      "type": "belongsTo",
+      "model": "Article",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
