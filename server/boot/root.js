@@ -2,7 +2,8 @@
 
 module.exports = function(server) {
   // Install a `/` route that returns server status
-  var router = server.loopback.Router();
+  /*var router = server.loopback.Router();
   router.get('/', server.loopback.status());
-  server.use(router);
+  server.use(router);*/
+  // static files from ../../client/dist will be served. Check ../middleware.json
 };
