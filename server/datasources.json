@@ -2,5 +2,23 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "mongodb-datasource": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "loopbackVueCommenting",
+    "password": "",
+    "name": "mongodb-datasource",
+    "user": "root",
+    "connector": "mongodb"
+  },
+  "mysql-datasource": {
+    "host": "localhost",
+    "port": 3306,
+    "database": "loopbackVueCommenting",
+    "password": "${MYSQL_DB_PASSWORD}",
+    "name": "mysql-datasource",
+    "user": "root",
+    "connector": "mysql"
   }
 }
