@@ -25,7 +25,7 @@
     "customUser": {
       "type": "belongsTo",
       "model": "CustomUser",
-      "foreignKey": "",
+      "foreignKey": "userId",
       "options": {
         "nestRemoting": true
       }
@@ -41,7 +41,7 @@
     "comment": {
       "type": "belongsTo",
       "model": "Comment",
-      "foreignKey": "",
+      "foreignKey": "parentCommentId",
       "options": {
         "nestRemoting": true
       }
@@ -49,12 +49,42 @@
     "article": {
       "type": "belongsTo",
       "model": "Article",
-      "foreignKey": "",
+      "foreignKey": "articleId",
       "options": {
         "nestRemoting": true
       }
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": [
+        "patchAttributes",
+        "deleteById"
+      ]
+    }
+  ],
   "methods": {}
 }

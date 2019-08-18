@@ -14,7 +14,8 @@
     ]
   },
   "User": {
-    "dataSource": "mongodb-datasource"
+    "dataSource": "mongodb-datasource",
+    "public": false
   },
   "AccessToken": {
     "dataSource": "mongodb-datasource",

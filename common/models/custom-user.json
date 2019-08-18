@@ -10,6 +10,14 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    },
+    "updatedAt": {
+      "type": "date",
+      "required": true
     }
   },
   "validations": [],
@@ -31,6 +39,27 @@
       }
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": ["patchAttributes", "deleteById"]
+    }
+  ],
   "methods": {}
 }
