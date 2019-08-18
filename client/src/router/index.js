@@ -1,9 +1,10 @@
 import VueRouter from 'vue-router';
 
-import Dashboard from '../containers/Dashboard';
 import Login from '../containers/Login';
 import Register from '../containers/Register';
-import Articles from '../containers/Articles';
+import ArticlesMain from '../containers/articles/ArticlesMain';
+import CreateArticle from '../containers/articles/CreateArticle';
+import Article from '../containers/articles/Article';
 
 import { customLocalStorage } from '../utils';
 
@@ -12,11 +13,25 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      name: 'Dashboard',
-      component: Dashboard,
-      meta: {
-        requiresAuth: true
+      beforeEnter: () => {
+        router.push({
+          path: 'articles'
+        });
       }
+    },
+    {
+      path: '/articles',
+      component: ArticlesMain,
+      children: [
+        {
+          path: 'create',
+          component: CreateArticle
+        },
+        {
+          path: ':id',
+          component: Article
+        }
+      ]
     },
     {
       path: '/login',
@@ -27,11 +42,6 @@ const router = new VueRouter({
       path: '/register',
       name: 'Register',
       component: Register
-    },
-    {
-      path: '/articles',
-      name: 'Articles',
-      component: Articles
     }
   ]
 });
@@ -44,7 +54,6 @@ router.beforeEach((to, from, next) => {
 
     if (user) {
       // logged in
-      console.log(user); // todo
       next();
     } else {
       // not logged in
