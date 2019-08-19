@@ -2,6 +2,7 @@ import VueRouter from 'vue-router';
 
 import Login from '../containers/Login';
 import Register from '../containers/Register';
+import ArticlesList from '../containers/articles/ArticlesList';
 import ArticlesMain from '../containers/articles/ArticlesMain';
 import CreateArticle from '../containers/articles/CreateArticle';
 import Article from '../containers/articles/Article';
@@ -24,8 +25,15 @@ const router = new VueRouter({
       component: ArticlesMain,
       children: [
         {
+          path: '',
+          component: ArticlesList
+        },
+        {
           path: 'create',
-          component: CreateArticle
+          component: CreateArticle,
+          meta: {
+            requiresAuth: true
+          }
         },
         {
           path: ':id',
