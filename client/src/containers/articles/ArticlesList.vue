@@ -17,7 +17,7 @@
       <sui-feed-event v-for="article in articles" v-bind:key="article.id" class="margin-bottom-8">
         <sui-feed-content>
           <sui-feed-summary>
-            <router-link class="title" :to="'articles/' + article.id">
+            <router-link class="title" :to="{name: 'Article', params: { article, id: article.id }}">
               {{ article.title }}
             </router-link> 
             <sui-feed-date>
@@ -29,7 +29,7 @@
           </sui-feed-extra>
           <sui-feed-meta>
             <sui-feed-like>
-              4 comments
+              {{ article.comments.length }} comments
             </sui-feed-like>
           </sui-feed-meta>
         </sui-feed-content>
