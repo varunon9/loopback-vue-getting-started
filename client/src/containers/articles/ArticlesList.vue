@@ -5,7 +5,8 @@
         Hello {{ user ? user.name : 'Guest'}}
       </sui-grid-column>
       <sui-grid-column class="right-menu" v-if="user">
-        <router-link to="/articles/create">Create an article</router-link>
+        <router-link to="/articles/create" class="margin-right-16">Create an article</router-link>
+        <router-link to="/logout">Logout</router-link>
       </sui-grid-column>
       <sui-grid-column class="right-menu" v-else>
         <router-link to="/login">Login</router-link>
@@ -25,7 +26,7 @@
           </sui-feed-summary>
           <sui-feed-extra text>
             {{ article.content }}
-          </sui-feed-extra text>
+          </sui-feed-extra>
           <sui-feed-meta>
             <sui-feed-like>
               4 comments
@@ -38,14 +39,18 @@
 </template>
 
 <script>
-import { customLocalStorage } from '../../utils';
 import { getArticles } from '../../actions';
 
 export default {
-  name: 'ArticlesMain',
+  name: 'ArticlesList',
+  props: {
+    user: {
+      type: Object,
+      validator: typeof user === 'object'
+    }
+  },
   data: function() {
     return {
-      user: customLocalStorage.getItem('user'),
       articles: []
     };
   },
@@ -60,6 +65,7 @@ export default {
         this.articles = response.data;
       })
       .catch(error => {
+        // eslint-disable-next-line
         console.error(error);
       })
   }
@@ -75,5 +81,8 @@ export default {
   }
   .margin-bottom-8 {
     margin-bottom: 8px !important;
+  }
+  .margin-right-16 {
+    margin-right: 16px;
   }
 </style>

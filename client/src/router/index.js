@@ -50,6 +50,16 @@ const router = new VueRouter({
       path: '/register',
       name: 'Register',
       component: Register
+    },
+    {
+      path: '/logout',
+      beforeEnter: () => {
+        // clear user data from localstorage
+        customLocalStorage.removeItem('user');
+        router.push({
+          path: 'login'
+        });
+      }
     }
   ]
 });
