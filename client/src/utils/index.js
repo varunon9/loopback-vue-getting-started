@@ -20,3 +20,16 @@ export const customLocalStorage = {
     localStorage.removeItem(key);
   }
 };
+
+export const getAuthHeaderConfig = () => {
+  const user = customLocalStorage.getItem('user');
+  const config = {
+    headers: {
+      Authorization: ''
+    }
+  };
+  if (user) {
+    config.headers.Authorization = `${user.loginData.id}`
+  }
+  return config;
+}

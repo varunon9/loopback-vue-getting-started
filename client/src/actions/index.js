@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { getAuthHeaderConfig } from '../utils';
+
 const BASE_URL = 'http://localhost:3000/api';
 
 const API_URLS = {
@@ -8,7 +10,8 @@ const API_URLS = {
   PATCH_COMMENT: BASE_URL + '/comments/:commentId',
   USERS_LOGIN: BASE_URL + '/users/login',
   GET_USER: BASE_URL + '/users/:userId',
-  USERS: BASE_URL + '/users'
+  USERS: BASE_URL + '/users',
+  ARTICLES: BASE_URL + '/articles'
 };
 
 export const getArticles = () => {
@@ -17,14 +20,13 @@ export const getArticles = () => {
 };
 
 export const createArticleComment = (articleId, data) => {
-  console.log(data);
   const url = API_URLS.CREATE_ARTICLE_COMMENT.replace(':articleId', articleId);
-  return axios.post(url, data);
+  return axios.post(url, data, getAuthHeaderConfig());
 };
 
 export const patchComment = (commentId, data) => {
   const url = API_URLS.PATCH_COMMENT.replace(':commentId', commentId);
-  return axios.put(url, data);
+  return axios.patch(url, data, getAuthHeaderConfig());
 };
 
 export const loginUser = data => {
@@ -41,4 +43,9 @@ export const getUser = loginData => {
 export const registerUser = data => {
   const url = API_URLS.USERS;
   return axios.post(url, data);
+};
+
+export const createArticle = data => {
+  const url = API_URLS.ARTICLES;
+  return axios.post(url, data, getAuthHeaderConfig());
 };

@@ -39,7 +39,7 @@
   import { registerUser } from '../actions';
 
   export default {
-    name: 'Login',
+    name: 'Register',
     data: function() {
       return {
         registrationInfo: {

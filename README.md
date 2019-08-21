@@ -1,6 +1,6 @@
 # loopback-vue-getting-started
 
-Build a Blogging platform with nested commenting feature using loopback and vue.js
+Build a Blogging platform with nested commenting feature using loopback, vue.js and semantic-ui.
 
 ### How to run
 
