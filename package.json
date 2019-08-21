@@ -8,7 +8,8 @@
   "scripts": {
     "lint": "eslint .",
     "start": "node .",
-    "posttest": "npm run lint"
+    "posttest": "npm run lint",
+    "start-debug": "export DEBUG=loopback:security:* && nodemon"
   },
   "dependencies": {
     "compression": "^1.0.3",
