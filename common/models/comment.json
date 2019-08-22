@@ -73,7 +73,7 @@
       "principalType": "ROLE",
       "principalId": "$authenticated",
       "permission": "ALLOW",
-      "property": "create"
+      "property": ["create", "__create__comments"]
     },
     {
       "accessType": "EXECUTE",

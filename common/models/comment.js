@@ -12,4 +12,10 @@ module.exports = function(Comment) {
     context.args.data.updatedAt = new Date();
     next();
   });
+
+  Comment.beforeRemote('prototype.__create__comments', function(context, instance, next) {
+    context.args.data.createdAt = new Date();
+    context.args.data.updatedAt = new Date();
+    next();
+  });
 };

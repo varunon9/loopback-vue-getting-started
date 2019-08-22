@@ -5,7 +5,7 @@ import { getAuthHeaderConfig } from '../utils';
 const BASE_URL = 'http://localhost:3000/api';
 
 const API_URLS = {
-  GET_ARTICLES_DATA: BASE_URL + '/articles?filter[include]=comments',
+  GET_ARTICLES_DATA: BASE_URL + '/articles?filter[include]=customUser&filter[include][comments]=comments&filter[include][comments]=customUser',
   CREATE_ARTICLE_COMMENT: BASE_URL + '/articles/:articleId/comments',
   PATCH_COMMENT: BASE_URL + '/comments/:commentId',
   USERS_LOGIN: BASE_URL + '/users/login',

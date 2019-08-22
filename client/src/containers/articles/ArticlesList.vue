@@ -20,6 +20,9 @@
             <router-link class="title" :to="{name: 'Article', params: { article, id: article.id }}">
               {{ article.title }}
             </router-link> 
+            <sui-feed-date v-if="article.customUser">
+              {{ article.customUser.name }} on
+            </sui-feed-date>
             <sui-feed-date>
               {{ getFormattedDateText(article.createdAt) }}
             </sui-feed-date>
@@ -40,6 +43,7 @@
 
 <script>
 import { getArticles } from '../../actions';
+import { getFormattedDateText } from '../../utils';
 
 export default {
   name: 'ArticlesList',
@@ -55,9 +59,7 @@ export default {
     };
   },
   methods: {
-    getFormattedDateText: (date) => {
-      return new Date(date).toDateString();
-    }
+    getFormattedDateText
   },
   mounted: function () {
     getArticles()

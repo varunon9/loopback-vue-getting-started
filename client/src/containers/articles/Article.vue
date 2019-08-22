@@ -1,9 +1,17 @@
 <template>
   <div>
     <sui-segment basic>
-      <h1 is="sui-header">Article</h1>
+      <h1 is="sui-header">{{article.title}}</h1>
+      <p>
+        {{article.content}}
+      </p>
       <sui-comment-group>
         <h3 is="sui-header" dividing>Comments</h3>
+        <comment 
+          v-for="comment in article.comments" 
+          v-bind:comment="comment" 
+          v-bind:key="comment.id"
+        />
       </sui-comment-group>
       <sui-form v-if="user">
         <sui-form-field>
@@ -20,6 +28,7 @@
 </template>
 
 <script>
+  import Comment from '../../components/Comment';
   import { createArticleComment, patchComment } from '../../actions';
 
   export default {
@@ -29,7 +38,9 @@
       user: Object
     },
     data() {
-      const userComment = this.article.comments.filter(comment => comment.userId === this.user.id);
+      const userComment = this.user ? 
+        this.article.comments.filter(comment => comment.userId === this.user.id)
+        : [];
       if (userComment.length === 0) {
         userComment.push({
           content: ''
@@ -65,6 +76,9 @@
             });
         }
       }
+    },
+    components: {
+      'comment': Comment
     }
   }
 </script>
