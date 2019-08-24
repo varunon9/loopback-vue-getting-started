@@ -24,3 +24,9 @@ Build a Blogging platform with nested commenting feature using loopback, vue.js,
 3. Authenticated users can comment (or edit comment) on an article.
 4. Authenticated users can reply (or edit reply) to comments.
 5. Any user can browse articles, comments as well as replies.
+
+#### Models visualization using loopback-component-visualizer
+
+* Visit http://localhost:3000/visualize
+
+![models visualization](./screenshots/model-visualizer.png)
