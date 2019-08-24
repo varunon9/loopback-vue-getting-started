@@ -23,4 +23,8 @@ export default {
   .center-aligned {
     margin: auto;
   }
+
+  .comment-textarea {
+    max-height: 4em !important;
+  }
 </style>

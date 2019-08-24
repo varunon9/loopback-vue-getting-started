@@ -11,7 +11,9 @@ const API_URLS = {
   USERS_LOGIN: BASE_URL + '/users/login',
   GET_USER: BASE_URL + '/users/:userId',
   USERS: BASE_URL + '/users',
-  ARTICLES: BASE_URL + '/articles'
+  ARTICLES: BASE_URL + '/articles',
+  COMMENT_REPLIES: BASE_URL + '/comments/:commentId/?filter[include][comments]=customUser',
+  CREATE_REPLY: BASE_URL + '/comments/:commentId/comments',
 };
 
 export const getArticles = () => {
@@ -47,5 +49,15 @@ export const registerUser = data => {
 
 export const createArticle = data => {
   const url = API_URLS.ARTICLES;
+  return axios.post(url, data, getAuthHeaderConfig());
+};
+
+export const getCommentReplies = commentId => {
+  const url = API_URLS.COMMENT_REPLIES.replace(':commentId', commentId);
+  return axios.get(url, getAuthHeaderConfig());
+};
+
+export const createReply = (commentId, data) => {
+  const url = API_URLS.CREATE_REPLY.replace(':commentId', commentId);
   return axios.post(url, data, getAuthHeaderConfig());
 };
