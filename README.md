@@ -30,3 +30,7 @@ Build a Blogging platform with nested commenting feature using loopback, vue.js,
 * Visit http://localhost:3000/visualize
 
 ![models visualization](./screenshots/model-visualizer.png)
+
+### Demo
+
+![Demo GIF](./screenshots/demo.gif)
