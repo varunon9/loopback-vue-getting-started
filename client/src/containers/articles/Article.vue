@@ -2,7 +2,7 @@
   <div>
     <sui-segment basic>
       Hello {{ user ? user.name : 'Guest'}}
-    </sui-segment basic>
+    </sui-segment>
     <sui-segment basic>
       <h1 is="sui-header" color="blue">{{article.title}}</h1>
       <p>
