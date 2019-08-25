@@ -34,3 +34,7 @@ Build a Blogging platform with nested commenting feature using loopback, vue.js,
 ### Demo
 
 ![Demo GIF](./screenshots/demo.gif)
+
+### Blog
+
+https://medium.com/@varunon9/getting-started-with-loopback-building-a-blogging-platform-428ba6cafe0c?sk=45d5356fd0fe167f94e79dc3d5ff7413
