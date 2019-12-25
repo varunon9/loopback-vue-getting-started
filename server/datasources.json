@@ -4,8 +4,8 @@
     "connector": "memory"
   },
   "mongodb-datasource": {
-    "host": "localhost",
-    "port": 27017,
+    "host": "${MONGO_DB_HOST}",
+    "port": "${MONGO_DB_PORT}",
     "database": "loopbackVueCommenting",
     "password": "",
     "name": "mongodb-datasource",
